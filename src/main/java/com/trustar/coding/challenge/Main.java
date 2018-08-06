@@ -1,18 +1,35 @@
 package com.trustar.coding.challenge;
 
-import com.trustar.coding.challenge.helper.NestedArrayBuilder;
+import com.trustar.coding.challenge.annotations.PackagePrivateForTest;
+import com.trustar.coding.challenge.helper.NestedListBuilder;
+import com.trustar.coding.challenge.obj.NestedInteger;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
-        NestedArrayBuilder builder = new NestedArrayBuilder();
-        try {
-            builder.buildNestedArrayFromFile();
-        } catch (IOException e) {
-            System.out.printf("Error occurred: %s", e.getMessage());
+        NestedListBuilder builder = new NestedListBuilder();
+        for (String arg : args) {
+            List<NestedInteger> nestedIntegerList = builder.buildNestedList(arg);
+
+            List<Integer> flatList = new ArrayList<>();
+            flattenNestedInteger(nestedIntegerList, flatList);
+            System.out.println(flatList);
+
         }
 
+    }
+
+    @PackagePrivateForTest
+    protected static void flattenNestedInteger(List<NestedInteger> nestedInteger, List<Integer> flatList) {
+        for (NestedInteger integer : nestedInteger) {
+            if (integer.isArray()) {
+                flattenNestedInteger(integer.getNestedList(), flatList);
+            } else {
+                flatList.add(integer.getNumber());
+            }
+        }
     }
 }
