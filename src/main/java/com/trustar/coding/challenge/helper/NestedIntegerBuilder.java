@@ -6,7 +6,7 @@ import com.trustar.coding.challenge.obj.NestedInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NestedListBuilder {
+public class NestedIntegerBuilder {
 
     private static final String COMMA = ",";
     private static final String ARRAY_END = "]";
@@ -14,13 +14,14 @@ public class NestedListBuilder {
 
     private ThreadLocal<Integer> lineIndex = ThreadLocal.withInitial(() -> 0);
 
-    public List<NestedInteger> buildNestedList(String line) {
+    public NestedInteger buildNestedList(String line) {
 
         try {
-            List<NestedInteger> nestedIntegers = new ArrayList<>();
-            build(nestedIntegers, line.substring(1, line.lastIndexOf(ARRAY_END)));
+            NestedInteger nestedInteger = new NestedInteger();
+            nestedInteger.setNestedList(new ArrayList<>());
+            build(nestedInteger.getNestedList(), line.substring(1, line.lastIndexOf(ARRAY_END)));
 
-            return nestedIntegers;
+            return nestedInteger;
         } finally {
             lineIndex.remove();
         }

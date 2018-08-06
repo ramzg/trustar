@@ -7,6 +7,22 @@ public class NestedInteger {
     private List<NestedInteger> nestedList;
     private boolean isArray;
 
+    public NestedInteger(int number) {
+        this.number = number;
+        this.nestedList = null;
+        this.isArray = false;
+    }
+
+    public NestedInteger(List<NestedInteger> nestedList) {
+        this.nestedList = nestedList;
+        this.isArray = true;
+        this.number = null;
+    }
+
+    public NestedInteger() {
+
+    }
+
     public Integer getNumber() {
         return number;
     }
@@ -29,5 +45,15 @@ public class NestedInteger {
 
     public void setArray(boolean array) {
         isArray = array;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        if (number != null) builder.append(number);
+        if (nestedList != null) builder.append(nestedList);
+
+        return builder.toString();
     }
 }
