@@ -88,6 +88,10 @@ public class NestedIntegerBuilderTest {
         assertNotNull(nestedInteger);
         assertNull(nestedInteger.getNumber());
         assertNotNull(nestedInteger.getNestedList());
+
+        System.out.printf("\nInput: %s\n", line);
+        System.out.printf("NestedIntegers: %s\n", nestedInteger);
+
         return nestedInteger.getNestedList();
     }
 }
