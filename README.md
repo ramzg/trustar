@@ -1,8 +1,9 @@
 # TruSTAR coding challenge
-Steps to execute the project:
-* Clone the repository
-* cd {local-repo-path}
+
+Build the project:
 ```
+$ git clone git@github.com:ramzg/trustar.git
+$ cd <local-repo-path>
 $ mvn clean install
 ...
 ...
@@ -23,7 +24,9 @@ $ mvn clean install
 [INFO] Finished at: 2018-08-05T23:06:42-07:00
 [INFO] Final Memory: 25M/83M
 [INFO] ------------------------------------------------------------------------
-
+```
+Execute the jar file:
+```
 $ java -jar <path>/true-star-coding-exercise-1.0-SNAPSHOT-jar-with-dependencies.jar [[[[1],2,[3]],[[1,2,[3],6],4]],[[1,2,[3]],4]]
 
 Nested Integer: [[[[1],2,[3]],[[1,2,[3],6],4]],[[1,2,[3]],4]]
