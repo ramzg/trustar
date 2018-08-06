@@ -10,10 +10,14 @@ import java.util.List;
 
 class Main {
 
+    @PackagePrivateForTest
+    static final String NO_ARGUMENTS_WERE_SUPPLIED = "No arguments were provided";
+
     public static void main(String[] args) {
 
         if (ArrayUtils.isEmpty(args)) {
             printUsage();
+            throw new RuntimeException(NO_ARGUMENTS_WERE_SUPPLIED);
         }
 
         NestedIntegerBuilder builder = new NestedIntegerBuilder();

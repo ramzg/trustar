@@ -15,6 +15,16 @@ import static org.testng.Assert.assertTrue;
 public class MainTest {
 
     @Test
+    public void testMain() {
+        try {
+            Main.main(new String[]{});
+        } catch (RuntimeException ex) {
+            assertEquals(ex.getMessage(), Main.NO_ARGUMENTS_WERE_SUPPLIED);
+        }
+        Main.main(new String[] { "[[[1,2,[3]],4],[[1,2,[3]],4]]" });
+    }
+
+    @Test
     public void testFlattenNestedInteger() {
 
         NestedInteger nestedInteger = new NestedInteger();
